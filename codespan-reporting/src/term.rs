@@ -25,9 +25,10 @@ pub use self::config::Styles;
 /// * a file was changed so that it is too small to have an index
 /// * IO fails
 pub fn emit<'files, F: Files<'files> + ?Sized>(
-    #[cfg(feature = "termcolor")] writer: &mut dyn WriteColor,
-    #[cfg(all(not(feature = "termcolor"), feature = "std"))] writer: &mut dyn std::io::Write,
-    #[cfg(all(not(feature = "termcolor"), not(feature = "std")))] writer: &mut dyn core::fmt::Write,
+    writer: &mut dyn std::io::Write,
+    // #[cfg(feature = "termcolor")] writer: &mut dyn WriteColor,
+    // #[cfg(all(not(feature = "termcolor"), feature = "std"))] writer: &mut dyn std::io::Write,
+    // #[cfg(all(not(feature = "termcolor"), not(feature = "std")))] writer: &mut dyn core::fmt::Write,
     config: &Config,
     files: &'files F,
     diagnostic: &Diagnostic<F::FileId>,
